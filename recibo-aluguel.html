@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Recibo de Aluguel Grátis 2025 – Pronto para Imprimir</title>
+  <meta name="description" content="Gere recibos de aluguel grátis online. Preencha os dados e imprima ou salve em PDF em segundos. Sem cadastro.">
+  <meta name="keywords" content="recibo de aluguel, recibo aluguel gratis, gerar recibo aluguel, modelo recibo aluguel, recibo aluguel pdf">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Gerador de Recibo de Aluguel Grátis">
+  <meta property="og:description" content="Gere recibos de aluguel online, grátis e sem cadastro. Pronto para imprimir ou salvar em PDF.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://allandosreis35-blip.github.io/calculadora-aluguel/recibo-aluguel.html">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f5f3;
+      color: #1a1a18;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e5e5e2;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    header .logo { font-size: 18px; font-weight: 600; color: #1a1a18; text-decoration: none; }
+    header nav a { font-size: 14px; color: #6b6b68; text-decoration: none; }
+    header nav a:hover { color: #1a1a18; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 2rem 1.25rem; }
+
+    h1 { font-size: 26px; font-weight: 600; margin-bottom: 8px; }
+    .subtitle { font-size: 15px; color: #6b6b68; margin-bottom: 2rem; }
+
+    .ad-slot {
+      background: #fff;
+      border: 1px dashed #d0d0cc;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 12px;
+      color: #aaa;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ad-top { min-height: 90px; padding: 1rem; }
+    .ad-mid  { min-height: 250px; padding: 1rem; }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e5e5e2;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .card h2 { font-size: 16px; font-weight: 600; margin-bottom: 1rem; color: #1a1a18; }
+
+    label { display: block; font-size: 13px; color: #6b6b68; margin-bottom: 5px; }
+
+    input[type="text"], input[type="number"], input[type="date"], select, textarea {
+      width: 100%;
+      padding: 9px 12px;
+      font-size: 15px;
+      border: 1px solid #d5d5d2;
+      border-radius: 8px;
+      background: #fff;
+      color: #1a1a18;
+      outline: none;
+      transition: border-color .15s;
+      font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus { border-color: #378add; }
+
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .row1 { margin-bottom: 12px; }
+
+    @media (max-width: 520px) { .row2 { grid-template-columns: 1fr; } }
+
+    .btn-gerar {
+      width: 100%;
+      padding: 13px;
+      font-size: 16px;
+      font-weight: 500;
+      background: #1a1a18;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background .15s;
+    }
+    .btn-gerar:hover { background: #333330; }
+
+    /* Área do recibo gerado */
+    .recibo-wrapper {
+      display: none;
+      margin-top: 1.5rem;
+    }
+
+    .recibo-acoes {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+    .btn-imprimir, .btn-novo {
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid #d5d5d2;
+      background: #fff;
+      color: #1a1a18;
+      transition: background .15s;
+    }
+    .btn-imprimir { background: #1a1a18; color: #fff; border-color: #1a1a18; }
+    .btn-imprimir:hover { background: #333330; }
+    .btn-novo:hover { background: #f5f5f3; }
+
+    /* O recibo em si */
+    .recibo {
+      background: #fff;
+      border: 1px solid #e5e5e2;
+      border-radius: 12px;
+      padding: 2.5rem;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    .recibo-titulo {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      font-family: inherit;
+    }
+
+    .recibo-subtitulo {
+      text-align: center;
+      font-size: 13px;
+      color: #6b6b68;
+      margin-bottom: 2rem;
+      font-family: -apple-system, sans-serif;
+    }
+
+    .recibo-valor-destaque {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 700;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      border: 2px solid #1a1a18;
+      border-radius: 8px;
+      font-family: -apple-system, sans-serif;
+    }
+
+    .recibo-corpo {
+      font-size: 15px;
+      line-height: 2;
+      text-align: justify;
+      margin-bottom: 2rem;
+    }
+
+    .recibo-divider {
+      border: none;
+      border-top: 1px solid #d5d5d2;
+      margin: 1.5rem 0;
+    }
+
+    .recibo-assinatura {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+      font-family: -apple-system, sans-serif;
+      font-size: 13px;
+    }
+
+    .assinatura-bloco { text-align: center; }
+    .assinatura-linha {
+      border-top: 1px solid #1a1a18;
+      margin-bottom: 6px;
+      padding-top: 6px;
+    }
+
+    .recibo-rodape {
+      text-align: center;
+      font-size: 11px;
+      color: #9b9b98;
+      margin-top: 2rem;
+      font-family: -apple-system, sans-serif;
+    }
+
+    /* Info section */
+    .info-section { margin-top: 2rem; }
+    .info-section h2 { font-size: 20px; font-weight: 600; margin-bottom: 1rem; }
+    .info-section h3 { font-size: 16px; font-weight: 600; margin: 1.25rem 0 .5rem; }
+    .info-section p  { font-size: 15px; color: #3a3a38; margin-bottom: .75rem; line-height: 1.7; }
+
+    .faq { margin-top: 2rem; }
+    .faq h2 { font-size: 20px; font-weight: 600; margin-bottom: 1rem; }
+    .faq-item { background: #fff; border: 1px solid #e5e5e2; border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 10px; }
+    .faq-item summary { font-size: 15px; font-weight: 500; cursor: pointer; list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item p { font-size: 14px; color: #4a4a48; margin-top: .75rem; }
+
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #9b9b98;
+      padding: 2rem 1.25rem;
+      border-top: 1px solid #e5e5e2;
+      margin-top: 2rem;
+    }
+
+    /* Print */
+    @media print {
+      body * { visibility: hidden; }
+      .recibo, .recibo * { visibility: visible; }
+      .recibo {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        border: none;
+        border-radius: 0;
+        padding: 2rem;
+        font-size: 14px;
+      }
+      .recibo-acoes { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/calculadora-aluguel/" class="logo">AluguelCalc</a>
+  <nav>
+    <a href="/calculadora-aluguel/">Calculadora de reajuste</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <h1>Gerador de recibo de aluguel</h1>
+  <p class="subtitle">Preencha os dados e gere um recibo pronto para imprimir ou salvar em PDF. Grátis e sem cadastro.</p>
+
+  <div class="ad-slot ad-top">
+    <!-- Ativar após aprovação AdSense -->
+    Espaço para anúncio (Google AdSense)
+  </div>
+
+  <!-- Formulário -->
+  <div class="card" id="formulario">
+    <h2>Dados do recibo</h2>
+
+    <div class="row2">
+      <div>
+        <label for="locador">Nome do locador (quem recebe)</label>
+        <input type="text" id="locador" placeholder="Ex: João Silva">
+      </div>
+      <div>
+        <label for="locador-cpf">CPF/CNPJ do locador</label>
+        <input type="text" id="locador-cpf" placeholder="Ex: 000.000.000-00">
+      </div>
+    </div>
+
+    <div class="row2">
+      <div>
+        <label for="inquilino">Nome do inquilino (quem paga)</label>
+        <input type="text" id="inquilino" placeholder="Ex: Maria Souza">
+      </div>
+      <div>
+        <label for="inquilino-cpf">CPF/CNPJ do inquilino</label>
+        <input type="text" id="inquilino-cpf" placeholder="Ex: 000.000.000-00">
+      </div>
+    </div>
+
+    <div class="row1">
+      <label for="endereco">Endereço do imóvel</label>
+      <input type="text" id="endereco" placeholder="Ex: Rua das Flores, 123, Apto 45 – Belo Horizonte/MG">
+    </div>
+
+    <div class="row2">
+      <div>
+        <label for="valor">Valor do aluguel (R$)</label>
+        <input type="number" id="valor" placeholder="Ex: 1500" min="0" step="0.01">
+      </div>
+      <div>
+        <label for="mes-ref">Mês de referência</label>
+        <input type="month" id="mes-ref">
+      </div>
+    </div>
+
+    <div class="row2">
+      <div>
+        <label for="data-pgto">Data de pagamento</label>
+        <input type="date" id="data-pgto">
+      </div>
+      <div>
+        <label for="cidade">Cidade</label>
+        <input type="text" id="cidade" placeholder="Ex: Belo Horizonte">
+      </div>
+    </div>
+
+    <div class="row1">
+      <label for="obs">Observações (opcional)</label>
+      <textarea id="obs" rows="2" placeholder="Ex: Inclui vaga de garagem. IPTU incluso."></textarea>
+    </div>
+
+    <button class="btn-gerar" onclick="gerarRecibo()">Gerar recibo</button>
+  </div>
+
+  <!-- Recibo gerado -->
+  <div class="recibo-wrapper" id="recibo-wrapper">
+    <div class="recibo-acoes">
+      <button class="btn-imprimir" onclick="window.print()">Imprimir / Salvar PDF</button>
+      <button class="btn-novo" onclick="novoRecibo()">Gerar novo recibo</button>
+    </div>
+
+    <div class="recibo" id="recibo">
+      <div class="recibo-titulo">Recibo de Aluguel</div>
+      <div class="recibo-subtitulo" id="r-subtitulo"></div>
+
+      <div class="recibo-valor-destaque" id="r-valor"></div>
+
+      <div class="recibo-corpo" id="r-corpo"></div>
+
+      <div id="r-obs-bloco" style="display:none">
+        <hr class="recibo-divider">
+        <div style="font-size:13px; color:#6b6b68; font-family:-apple-system,sans-serif">
+          <strong>Observações:</strong> <span id="r-obs"></span>
+        </div>
+      </div>
+
+      <div class="recibo-assinatura">
+        <div class="assinatura-bloco">
+          <div class="assinatura-linha"></div>
+          <div id="r-locador-ass"></div>
+          <div style="color:#6b6b68; font-size:12px">Locador</div>
+        </div>
+        <div class="assinatura-bloco">
+          <div class="assinatura-linha"></div>
+          <div id="r-inquilino-ass"></div>
+          <div style="color:#6b6b68; font-size:12px">Inquilino</div>
+        </div>
+      </div>
+
+      <div class="recibo-rodape" id="r-rodape"></div>
+    </div>
+  </div>
+
+  <div class="ad-slot ad-mid">
+    <!-- Ativar após aprovação AdSense -->
+    Espaço para anúncio (Google AdSense)
+  </div>
+
+  <div class="info-section">
+    <h2>O que é um recibo de aluguel?</h2>
+    <p>O recibo de aluguel é o documento que comprova o pagamento do aluguel pelo inquilino ao locador. Ele é obrigatório por lei — a Lei do Inquilinato (Lei 8.245/91) garante ao inquilino o direito de exigir recibo sempre que efetuar o pagamento.</p>
+
+    <h3>O recibo de aluguel tem validade jurídica?</h3>
+    <p>Sim. O recibo de aluguel é um documento com validade jurídica e pode ser usado como prova de pagamento em processos judiciais ou arbitrais. Recomenda-se guardar todos os recibos durante e após o período de locação.</p>
+
+    <h3>Quem deve guardar o recibo?</h3>
+    <p>Tanto o locador quanto o inquilino devem guardar uma via do recibo. O locador para comprovar o recebimento, e o inquilino para comprovar o pagamento em caso de disputa.</p>
+
+    <h3>O que deve constar no recibo?</h3>
+    <p>Um recibo completo deve ter: nome completo e CPF/CNPJ do locador e do inquilino, endereço do imóvel, valor pago, mês de referência, data do pagamento e assinatura do locador.</p>
+  </div>
+
+  <div class="faq">
+    <h2>Perguntas frequentes</h2>
+
+    <details class="faq-item">
+      <summary>O locador é obrigado a fornecer recibo?</summary>
+      <p>Sim. O artigo 22 da Lei do Inquilinato obriga o locador a fornecer recibo discriminado das importâncias pagas pelo inquilino. A recusa pode ser considerada infração contratual.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Posso usar este recibo gerado online?</summary>
+      <p>Sim. O recibo gerado por esta ferramenta contém todos os elementos necessários para ter validade. Após imprimir, basta o locador assinar. Para maior segurança jurídica, ambas as partes podem assinar.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>Como salvar o recibo em PDF?</summary>
+      <p>Clique em "Imprimir / Salvar PDF". Na janela de impressão que abrir, em "Destino" ou "Impressora", selecione "Salvar como PDF". O arquivo será salvo no seu computador.</p>
+    </details>
+
+    <details class="faq-item">
+      <summary>O recibo precisa de testemunhas?</summary>
+      <p>Não é obrigatório. O recibo de aluguel tem validade sem testemunhas. A assinatura do locador é suficiente para comprovar o recebimento do pagamento.</p>
+    </details>
+  </div>
+
+</div>
+
+<footer>
+  <p>AluguelCalc · Gerador de Recibo de Aluguel · Uso gratuito</p>
+  <p style="margin-top:4px">Este recibo tem fins informativos. Para situações complexas, consulte um advogado.</p>
+</footer>
+
+<script>
+function fmtValor(v) {
+  return parseFloat(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+}
+
+function fmtValorExtenso(v) {
+  const n = parseFloat(v)
+  const inteiro = Math.floor(n)
+  const centavos = Math.round((n - inteiro) * 100)
+
+  const unidades = ['', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove',
+    'dez', 'onze', 'doze', 'treze', 'quatorze', 'quinze', 'dezesseis', 'dezessete', 'dezoito', 'dezenove']
+  const dezenas = ['', '', 'vinte', 'trinta', 'quarenta', 'cinquenta', 'sessenta', 'setenta', 'oitenta', 'noventa']
+  const centenas = ['', 'cento', 'duzentos', 'trezentos', 'quatrocentos', 'quinhentos',
+    'seiscentos', 'setecentos', 'oitocentos', 'novecentos']
+
+  function converterCentena(num) {
+    if (num === 0) return ''
+    if (num === 100) return 'cem'
+    let resultado = ''
+    if (num >= 100) { resultado += centenas[Math.floor(num / 100)]; num %= 100; if (num > 0) resultado += ' e ' }
+    if (num >= 20) { resultado += dezenas[Math.floor(num / 10)]; if (num % 10 > 0) resultado += ' e ' + unidades[num % 10] }
+    else if (num > 0) resultado += unidades[num]
+    return resultado
+  }
+
+  function converterNumero(num) {
+    if (num === 0) return 'zero'
+    let resultado = ''
+    if (num >= 1000) {
+      const mil = Math.floor(num / 1000)
+      resultado += (mil === 1 ? 'mil' : converterCentena(mil) + ' mil')
+      num %= 1000
+      if (num > 0) resultado += ' e '
+    }
+    resultado += converterCentena(num)
+    return resultado
+  }
+
+  let extenso = converterNumero(inteiro) + (inteiro === 1 ? ' real' : ' reais')
+  if (centavos > 0) extenso += ' e ' + converterNumero(centavos) + (centavos === 1 ? ' centavo' : ' centavos')
+  return extenso
+}
+
+function fmtMes(mesRef) {
+  const [ano, mes] = mesRef.split('-')
+  const meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro']
+  return `${meses[parseInt(mes)-1]}/${ano}`
+}
+
+function fmtData(dataStr) {
+  const [ano, mes, dia] = dataStr.split('-')
+  const meses = ['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro']
+  return `${parseInt(dia)} de ${meses[parseInt(mes)-1]} de ${ano}`
+}
+
+function gerarRecibo() {
+  const locador      = document.getElementById('locador').value.trim()
+  const locadorCpf   = document.getElementById('locador-cpf').value.trim()
+  const inquilino    = document.getElementById('inquilino').value.trim()
+  const inquilinoCpf = document.getElementById('inquilino-cpf').value.trim()
+  const endereco     = document.getElementById('endereco').value.trim()
+  const valor        = document.getElementById('valor').value
+  const mesRef       = document.getElementById('mes-ref').value
+  const dataPgto     = document.getElementById('data-pgto').value
+  const cidade       = document.getElementById('cidade').value.trim()
+  const obs          = document.getElementById('obs').value.trim()
+
+  if (!locador || !inquilino || !endereco || !valor || !mesRef || !dataPgto) {
+    alert('Por favor, preencha todos os campos obrigatórios.')
+    return
+  }
+
+  const valorFmt    = fmtValor(valor)
+  const valorExtenso = fmtValorExtenso(valor)
+  const mesFmt      = fmtMes(mesRef)
+  const dataFmt     = fmtData(dataPgto)
+  const cidadeData  = cidade ? `${cidade}, ${dataFmt}` : dataFmt
+
+  document.getElementById('r-subtitulo').textContent = `Referente ao mês de ${mesFmt}`
+  document.getElementById('r-valor').textContent = valorFmt
+
+  let corpo = `Eu, <strong>${locador}</strong>`
+  if (locadorCpf) corpo += `, CPF/CNPJ ${locadorCpf},`
+  corpo += ` recebi de <strong>${inquilino}</strong>`
+  if (inquilinoCpf) corpo += `, CPF/CNPJ ${inquilinoCpf},`
+  corpo += ` a quantia de <strong>${valorFmt} (${valorExtenso})</strong>, `
+  corpo += `referente ao aluguel do imóvel situado à <strong>${endereco}</strong>, `
+  corpo += `relativo ao mês de <strong>${mesFmt}</strong>, pago em <strong>${dataFmt}</strong>. `
+  corpo += `E por estar de acordo, firmo o presente recibo para que produza seus efeitos legais.`
+
+  document.getElementById('r-corpo').innerHTML = corpo
+
+  if (obs) {
+    document.getElementById('r-obs-bloco').style.display = 'block'
+    document.getElementById('r-obs').textContent = obs
+  } else {
+    document.getElementById('r-obs-bloco').style.display = 'none'
+  }
+
+  document.getElementById('r-locador-ass').textContent = locador
+  document.getElementById('r-inquilino-ass').textContent = inquilino
+  document.getElementById('r-rodape').textContent = cidadeData
+
+  document.getElementById('formulario').style.display = 'none'
+  document.getElementById('recibo-wrapper').style.display = 'block'
+  document.getElementById('recibo-wrapper').scrollIntoView({ behavior: 'smooth' })
+}
+
+function novoRecibo() {
+  document.getElementById('formulario').style.display = 'block'
+  document.getElementById('recibo-wrapper').style.display = 'none'
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+// Preenche a data de hoje por padrão
+document.getElementById('data-pgto').valueAsDate = new Date()
+const hoje = new Date()
+document.getElementById('mes-ref').value = `${hoje.getFullYear()}-${String(hoje.getMonth()+1).padStart(2,'0')}`
+</script>
+
+</body>
+</html>
